@@ -1,6 +1,7 @@
 {
 	"name" : "lpetrora/equilibrium",
-	"description" : "The Equilibrim framework for ReST apis",
+	"description" : "The Equilibrim framework",
+	"license" : "MIT",
 	"type" : "library",
 	"authors" : [{
 			"name" : "Leonardo Petrora"
