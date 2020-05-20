@@ -1,6 +1,5 @@
 <?php
 	namespace equilibrium;
-	require_once dirname(__DIR__).'/autoload.php';
 	require_once __DIR__.'/exceptions/ErrorException.php';
 
 	use Equilibrium;
@@ -23,6 +22,8 @@
 		    static::$appPath = $app_path;
 		    static::$vendorPath = $vendor_path;
 		    static::$equilibriumPath = $equilibrium_path;
+		    
+		    require_once static::$vendorPath . DIRECTORY_SEPARATOR .  'autoload.php';
 		    
 		    $this->_basePath = $app_path;
 		}
