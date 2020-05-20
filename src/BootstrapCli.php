@@ -7,24 +7,35 @@
 	
 	class BootstrapCli {
 		
-		protected $_http = '/';
-		protected $_basePath = '';
-		
+	    static public $appPath = null;
+	    static protected $vendorPath = null;
+	    static public $equilibriumPath = null;
+	    
+	    protected $_http = '/';
+	    protected $_basePath = '';
+	    
 		public function __construct()
 		{
-			//$this->_http = $httpDir;
-			$this->_basePath = realpath(__DIR__.'/../../');
+		    $equilibrium_path = realpath(__DIR__);
+		    $vendor_path = realpath(dirname(dirname(dirname($equilibrium_path))));
+		    $app_path = realpath(dirname($vendor_path));
+		    
+		    static::$appPath = $app_path;
+		    static::$vendorPath = $vendor_path;
+		    static::$equilibriumPath = $equilibrium_path;
+		    
+		    $this->_basePath = $app_path;
 		}
 		
 		protected function setup()
 		{
 		    session_save_path(sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'equilibrium' . DIRECTORY_SEPARATOR. 'session');
 		    
-			Equilibrium::$appPath = $this->_basePath;
-			Equilibrium::$equilibriumPath = __DIR__;
+			Equilibrium::$appPath = static::$appPath;
+			Equilibrium::$equilibriumPath = static::$equilibriumPath;
 			
 			$charset = Equilibrium::config()->application->charset;
-			header('Content-Type:text/html; charset='.$charset);
+			//header('Content-Type:text/html; charset='.$charset);
 			ini_set('default_charset',$charset);
 			date_default_timezone_set(Equilibrium::config()->application->timezone);
 			
