@@ -1,0 +1,20 @@
+<?php 
+//Here you can override configuration parameters. Files in this directory beggining with private- are ignoerd by git
+$config = [
+	'database' => [
+		'defaultDataSource' => 'myDatabaseSource',
+		'dataSources' => [
+			'myDatabaseSource' => [
+				'adapter' => 'mysql',
+				'server' => 'my_dev_sever',
+				'port' => 3306,
+				'user' => 'my_dev_user',
+				'password' => 'my_dev_secret' ,
+				'database' => 'my_dev_base',
+				'charset' => 'utf8'
+        		],
+		],
+	],
+];
+
+return $config;

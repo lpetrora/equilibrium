@@ -1,0 +1,18 @@
+#!/usr/bin/php
+<?php
+	namespace equilibrium;
+	
+	$current_dir = realpath(__DIR__);
+	$equilibrium_path = realpath(dirname($current_dir));
+	$vendor_path = realpath(dirname(dirname(dirname($equilibrium_path))));
+	$app_path = realpath(dirname($vendor_path));
+	
+	array_shift($argv);
+	$command = array_shift($argv);
+	$params = $argv;
+	
+	require_once $equilibrium_path . DIRECTORY_SEPARATOR . 'Installer.php';
+	Installer::setAppPath($app_path);
+	Installer::setVendorPath($vendor_path);
+	Installer::setEquilibriumPath($equilibrium_path);
+	Installer::launch($command, $params);

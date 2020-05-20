@@ -1,0 +1,11 @@
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh)$">
+  Require all denied
+</FilesMatch>
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^.*$ index.php [NC,L]
+</IfModule>
+<IfModule !mod_rewrite.c>
+  ErrorDocument 404 index.php
+</IfModule>

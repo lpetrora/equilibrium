@@ -1,0 +1,64 @@
+<?php
+//This is the built-in firewall
+
+/* There is predefined characters for roles:
+* Every user, logged on or not
+? Not logged on users
+@ Logged on users
+*/
+
+//Also you may define constants to identify logged on user roles
+const USER_IS_ADMIN = 1;
+const USER_IS_EMPLOYEE = 2;
+
+$auth = [
+	//Default policy: Deny all access and redirect to AccountController::actionNotAllowed
+	'global' =>  [
+		'allow' => false,
+		'callback' => 'app\controllers\AccountController::actionNotAllowed',
+	],
+	
+	'rules' => [
+		//Everyone can see AccountController::actionNotAllowed
+		[
+			'controller' => 'AccountController',
+			'actions' => [ 'actionNotAllowed'],
+			'roles' => ['*'],
+			'allow' => true,
+		],
+		
+		//Only logged on users can access AccountController:actionLogout
+		[
+			'controller' => 'AccountController',
+			'actions' => [ 'actionLogout'],
+			'roles' => ['@'],
+			'allow' => true,
+		],
+		
+		//Only not logged on users can access AccountController::actionLogout
+		[
+			'controller' => 'AccountController',
+			'actions' => [ 'actionLogin'],
+			'roles' => ['?'],
+			'allow' => true,
+		],
+		
+		//Only role admin can access all actions from AdminController
+		[
+			'controller' => 'AdminController',
+			'actions' => ['*'],
+			'roles' => [ USER_IS_ADMIN ],
+			'allow' => true;
+		],
+		
+		//Only role employee can access actionFoo y actionBar from EmployeeController
+		[
+			'controller' => 'EmployeeController',
+			'actions' => [ 'actionFoo', 'actionBar'],
+			'roles' => [ USER_IS_EMPLOYEE ],
+			'allow' => true,
+		],
+	],
+];
+
+return $auth;
