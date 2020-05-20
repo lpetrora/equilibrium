@@ -6,7 +6,7 @@
 	class Installer
 	{
 	    static protected $directories = [
-	        'command' => 0755,
+	        'commands' => 0755,
 	        'controllers' => 0755,
 	        'config' => 0755,
 	        'helpers' => 0755,
