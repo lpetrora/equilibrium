@@ -109,7 +109,7 @@
 			$result = ['Columns' => $this->_columns, 
 						'Models' => $models, 
 						'Page' => $this->_page,
-						'Pages' => max(ceil($this->_totalModels/$this->_pageSize),1),
+						'Pages' => ($this->_pageSize > 0)?max(ceil($this->_totalModels/$this->_pageSize),1):0,
 						'PageSize' => $this->_pageSize, 
 						'Name' => $this->_name, 
 						'TotalModels' => $this->_totalModels, 
