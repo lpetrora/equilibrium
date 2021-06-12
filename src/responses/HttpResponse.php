@@ -1,7 +1,7 @@
 <?php 
 namespace equilibrium\responses;
 
-class HttpResponse extends AbstratHttpResponse {
+class HttpResponse extends AbstractHttpResponse {
     protected $body = '';
     
     /**
