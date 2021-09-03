@@ -283,6 +283,10 @@
 				'Ocurrio un error al intentar hacer reverse de la base de datos'.PHP_EOL;
 				chdir ($currDir);
 			}
+			
+			//Para la nueva versión de propel
+			rename ('./generated-conf/loadDatabase.php', static::getAppPath() . '/config/database_map.php');
+			
 			//system('/bin/rm -R ' . $sqlDir);
 			
 			chdir ($currDir);

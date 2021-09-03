@@ -1,6 +1,9 @@
 <?php
 	namespace equilibrium;
 	use Equilibrium;
+
+	require_once Equilibrium::$appPath . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'database_map.php';
+
 	if (Equilibrium::config()->database !== null)
 	{
 		$conf = Equilibrium::config()->database;
