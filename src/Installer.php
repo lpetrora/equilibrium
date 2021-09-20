@@ -78,7 +78,7 @@
 		    while ($file = readdir($dir)) {
 		        if ( $file == '.' ) continue;
 		        if ( $file == '..' ) continue;
-		        if ( is_dir(file) ) {
+		        if ( is_dir($file) ) {
 		            static::copyDirectory($from . DIRECTORY_SEPARATOR . $file, $to . DIRECTORY_SEPARATOR . $file);
                     continue;          
 		        }
