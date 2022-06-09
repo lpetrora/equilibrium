@@ -2,7 +2,8 @@
 	namespace equilibrium;
 	use Equilibrium;
 
-	require_once Equilibrium::$appPath . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'database_map.php';
+	$databasemapfile = Equilibrium::$appPath . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'database_map.php';
+    if (file_exists($databasemapfile)) require_once $databasemapfile;
 
 	if (Equilibrium::config()->database !== null)
 	{
