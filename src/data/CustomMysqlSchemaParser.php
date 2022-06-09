@@ -15,7 +15,7 @@ use Propel\Generator\Reverse\MysqlSchemaParser;
 class CustomMysqlSchemaParser extends MysqlSchemaParser
 {
 	//Modified method in order to reverse views also
-	protected function parseTables(Database $database, ?Table $filterTable = null)
+	protected function parseTables(Database $database, ?Table $filterTable = null) : void
 	{
 		$sql = 'SHOW FULL TABLES';
 
