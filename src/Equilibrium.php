@@ -120,6 +120,7 @@ class Equilibrium
 	 */
 	static public function toLowerCamelcase ($str)
 	{
+		if (! $str) return '';
 		return preg_replace_callback('/_([a-z])/',
 				function($c)
 				{
