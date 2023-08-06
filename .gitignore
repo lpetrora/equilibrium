@@ -1,5 +1,8 @@
 .buildpath
 .project
 .settings
+.vscode
 composer.lock
 vendor/
+composer
+run.sh
